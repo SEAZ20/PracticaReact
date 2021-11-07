@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
+const user={
+  firstName: 'Silvio',
+  lastName:'Alcivar',
+  avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-256.png'
+}
+function getName(user){
+  return `${user.firstName} ${user.lastName}`
+}
+
+function getGreeting(user) {
+  if (user) {
+    return ( 
+    <div>
+      <h1>Hello, {getName(user)}!</h1>;
+      <img src={user.avatar}/>
+    </div>)
+   
+  }
+  return <h1>Hello, Stranger.</h1>;
+}
+const name= "Silvio "
+
+const element= <div>{getGreeting(user)}</div>
+const container= document.getElementById('root');
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+element,container
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
